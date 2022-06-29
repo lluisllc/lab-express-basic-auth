@@ -9,7 +9,16 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
 
+
   <body>
+  {{#if userInSession}}
+<form action="/logout" method="POST">
+  <button type="submit">Log out</button>
+</form>
+ {{else}}
+<a href="/signup">SignUp!</a>
+<a href="/logIn">Log In!</a>
+{{/if}}
 
     {{{body}}}
 

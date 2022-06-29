@@ -50,17 +50,21 @@ router.post("/login", (req, res, next) => {
         .catch((error) => next(error));
 });
 
-router.get("/login", (req, res) => res.render("auth/logIn"));
+router.get("/login", isLoggedOut, (req, res) => res.render("auth/logIn"));
 
 //                         .: ADDED :.
 router.get("/userProfile", isLoggedIn, (req, res) => {
     res.render("userProfile", { userInSession: req.session.currentUser });
-  });
-  
+});
+
 //                     .: ADDED :.
-  router.post("/logout", isLoggedIn, (req, res) => {
+router.post("/logout", (req, res) => {
     req.session.destroy();
     res.redirect("/");
-  });
+});
+
+// Iteración 3
+
+
 
 module.exports = router;

@@ -7,7 +7,7 @@ const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
 
-router.get("/signup", (req, res) => res.render("auth/signUp"));
+router.get("/signup", isLoggedOut, (req, res) => res.render("auth/signUp"));
 
 router.post("/signup", (req, res, next) => {
     // console.log("The form data: ", req.body);
@@ -59,6 +59,5 @@ router.post("/signup", (req, res, next) => {
         }); // close .catch()
 });
 
-router.get("/userProfile", (req, res) => res.render("userProfile"));
 
 module.exports = router;
