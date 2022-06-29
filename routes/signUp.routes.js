@@ -3,7 +3,7 @@ const User = require("./../models/User.model");
 const mongoose = require("mongoose");
 require("../db");
 
-//const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
+const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
 
